@@ -43,7 +43,8 @@ class Publications extends \yii\db\ActiveRecord
     }
 
     public $favorites_cnt = 0;
-
+    public $ownlike = 0;
+    
     /**
      * {@inheritdoc}
      */
@@ -79,12 +80,20 @@ class Publications extends \yii\db\ActiveRecord
 
     public function index()
     {
+        $userWhere = ' IS NULL';
+        if (!Yii::$app->user->isGuest){
+            $userWhere = "='" . Yii::$app->user->id . "'";
+        }
+
         return $this->find()
         ->select([
             'publications.*',
             'favorites_cnt' => Favorites::find()
                             ->select(['COUNT(*)'])
                             ->where('favorites.pub = publications.id'),
+            'ownlike' => Favorites::find()
+                        ->select(['COUNT(*)'])
+                        ->where('favorites.pub = publications.id and favorites.user'.$userWhere),
                 ])
         ->with('categoryobj');
     }

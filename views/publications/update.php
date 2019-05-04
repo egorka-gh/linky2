@@ -16,6 +16,7 @@ $this->params['breadcrumbs'][] = 'Edit "'.$model->name.'"';
 
     <?= $this->render('_form', [
         'model' => $model,
+        'editmode' => 'true',
     ]) ?>
 
 </div>

@@ -17,8 +17,7 @@ $this->title = 'Linky';
             <p class="smallText">Linky represents the most useful lists of links made for you,<br />
                 made by you. Come and get what you deserve. <br />
                 Think, make, <span>link.<span></p>
-            <a class="bttn" style="padding: 0.85% 2.5%; text-decoration: none" name="linkit" id="linkit"
-                href="index_create.php"> Link it!</a>
+                <?= Html::a('Link it!',['publications/create'], ['class'=>"bttn", 'style'=>"padding: 0.85% 2.5%; text-decoration: none;"]) ?>
         </div>
     </div>
 
@@ -29,21 +28,25 @@ $this->title = 'Linky';
                 <div class="semicircle2"></div>
                 <div class="cardNumber2">1</div>
                 <div class="cardTitle2 smallText2">
-                    <?= Html::a('Discover',['publications/index']) ?>
-                    </div>
+                    <?= Html::a('Discover',['publications/index'], ['class'=>"bttn", 'style'=>"padding: 2% 9%; text-decoration: none; font-size: 2.25vw"]) ?>
+                </div>
                 <div class="cardContent2">Look through the link lists provided <br /> by other users, you may filter
                     them <br /> up by categories or tags.</div>
             </div>
             <div class="card2">
                 <div class="semicircle2"></div>
                 <div class="cardNumber2">2</div>
-                <div class="cardTitle2">Join us</div>
+                <div class="cardTitle2">
+                    <?= Html::a('Join us',['/site/signup'], ['class'=>"bttn", 'style'=>"padding: 2% 9%; text-decoration: none; font-size: 2.25vw"]) ?>
+                </div>
                 <div class="cardContent2">Sign up to get more opportunities <br /> in your way.</div>
             </div>
             <div class="card2">
                 <div class="semicircle2"></div>
                 <div class="cardNumber2">3</div>
-                <div class="cardTitle2">Link it!</div>
+                <div class="cardTitle2">
+                    <?= Html::a('Link it!',['publications/create'], ['class'=>"bttn", 'style'=>"padding: 2% 9%; text-decoration: none; font-size: 2.25vw"]) ?>
+                </div>
                 <div class="cardContent2">Share the most useful links with <br /> others, stay creative and enjoy.</div>
             </div>
             <div></div>

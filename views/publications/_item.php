@@ -25,7 +25,7 @@ $ownlike=0;
             <div class="favorites" style="display: flex; flex-flow: row">
                 <div class="date" >
                 <input id="toggleLike<?php echo ($model->id) ?>" type="checkbox" 
-                    <?php if($ownlike ==1 ) echo ('checked') ?> <?php if(getUserLevel() == 0 ) echo ('disabled') ?> data-pid='<?php echo ($model->id) ?>'/> 
+                    <?php if($model->ownlike ==1 ) echo ('checked') ?> <?php if(getUserLevel() == 0 ) echo ('disabled') ?> data-pid='<?php echo ($model->id) ?>'/> 
                 <label for="toggleLike<?php echo ($model->id) ?>" aria-label="like">❤</label>
                 </div>
                     <div id="labelLike<?php echo ($model->id) ?>" class="date"  style='margin: 0 15%'><?php echo ($model->favorites_cnt) ?></div>

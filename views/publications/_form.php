@@ -1,11 +1,11 @@
 <?php
 
-use app\models\Publications;
 use app\models\Categories;
+use app\models\Publications;
 use app\widgets\ImgPickerWidget;
+use yii\helpers\ArrayHelper;
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
-use yii\helpers\ArrayHelper;
 
 /* @var $this yii\web\View */
 /* @var $model app\models\Publications */
@@ -20,10 +20,10 @@ $catList = ArrayHelper::map(Categories::find()->all(), 'id', 'name');
 
     <?php //$form->field($model, 'category')->textInput()?>
     <?php echo $form->field($model, 'category')
-        ->dropDownList(
-            $catList,         
-            ['prompt'=>'Select category']    // options
-        );?>
+    ->dropDownList(
+        $catList,
+        ['prompt' => 'Select category']// options
+    ); ?>
 
 
     <?=$form->field($model, 'name')->textInput(['maxlength' => true])?>
@@ -50,13 +50,15 @@ $catList = ArrayHelper::map(Categories::find()->all(), 'id', 'name');
     <div class="form-group">
         <?=Html::submitButton('Save', ['class' => 'btn btn-success'])?>
 
-        <?= Html::a('Delete', ['delete', 'id' => $model->id], [
-            'class' => 'btn btn-danger',
-            'data' => [
-                'confirm' => 'Are you sure you want to delete this item?',
-                'method' => 'post',
-            ],
-        ]) ?>
+        <?php if ( isset( $editmode)) {
+                  echo   Html::a('Delete', ['delete', 'id' => $model->id], [
+                'class' => 'btn btn-danger',
+                'data' => [
+                    'confirm' => 'Are you sure you want to delete this item?',
+                    'method' => 'post',
+                ],
+            ]); 
+        }?>
 
     </div>
 

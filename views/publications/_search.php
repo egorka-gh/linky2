@@ -19,8 +19,11 @@ $catList = ArrayHelper::map(Categories::find()->all(), 'id', 'name');
         'method' => 'get',
     ]); ?>
 
-
-    <?php echo $form->field($model, 'order')->radioList( [0=>'Recent', 1 => 'Best', 2 => 'Favorites', 3 => 'My links'] ); ?>
+<!-- incomplite try https://www.w3schools.com/howto/howto_css_custom_checkbox.asp or use js-->
+    <?php echo $form->field($model, 'order')->radioList( 
+        [0=>'Recent', 1 => 'Best', 2 => 'Favorites', 3 => 'My links'] ,
+        ['itemOptions' => ['labelOptions' => ['class' =>'fb']]]
+        ); ?>
 
     <?php // echo $form->field($model, 'category') ?>
     <?php echo $form->field($model, 'category')
