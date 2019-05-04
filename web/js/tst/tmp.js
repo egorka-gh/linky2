@@ -1,0 +1,5 @@
+jQuery(function ($) {
+    jQuery('#w0').yiiActiveForm([{ "id": "publicationssearch-id", "name": "id", "container": ".field-publicationssearch-id", "input": "#publicationssearch-id", "validate": function (attribute, value, messages, deferred, $form) { yii.validation.number(value, messages, { "pattern": /^\s*[+-]?\d+\s*$/, "message": "ID must be an integer.", "skipOnEmpty": 1 }); } }, { "id": "publicationssearch-category", "name": "category", "container": ".field-publicationssearch-category", "input": "#publicationssearch-category", "validate": function (attribute, value, messages, deferred, $form) { yii.validation.number(value, messages, { "pattern": /^\s*[+-]?\d+\s*$/, "message": "Category must be an integer.", "skipOnEmpty": 1 }); } }], []);
+    jQuery(document).pjax("#p0 a", { "push": true, "replace": false, "timeout": 1000, "scrollTo": false, "container": "#p0" });
+    jQuery(document).on("submit", "#p0 form[data-pjax]", function (event) { jQuery.pjax.submit(event, { "push": true, "replace": false, "timeout": 1000, "scrollTo": false, "container": "#p0" }); });
+});

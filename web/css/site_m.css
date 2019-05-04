@@ -1,0 +1,109 @@
+.container {
+    width: 100%;
+}
+
+.content {
+    width: 100%;
+}
+
+.smallText {
+    font-size: 1.2vw;
+    color: #414D5D;
+    font-weight: 500;
+    padding-bottom: 2.5%;
+}
+
+.bttn {
+    width: 12vw;
+    text-align: center;
+    background-color: #8338EC;
+    border-radius: 2vw;
+    box-shadow: 3px 3px 15px 0px rgba(131, 56, 236, 0.35);
+    border: none;
+    padding: 1% 0;
+    font-size: 1.15vw;
+    font-family: 'Nunito Sans Bold', sans-serif;
+    font-weight: 600;
+    color: white;
+    cursor: pointer;
+}
+
+.bttn:hover,
+.bttn:focus {
+    background-color: #D4B5FF;
+    box-shadow: 1px 1px 5px 0px rgba(131, 56, 236, 0.45);
+    transition: background-color 0.25s ease-in-out;
+    transition: box-shadow 0.25s ease-in-out;
+}
+
+.bttn:active {
+    transform: scale(0.75);
+    transition: scale 0.5s ease-in-out;
+}
+
+#principle {
+    width: 100%;
+}
+
+.principleH {
+    text-align: center;
+    font-size: 3vw;
+}
+
+
+/*main page cards*/
+
+.cards2 {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.card2 {
+    width: 18.75vw;
+    height: 30vw;
+    background-color: white;
+    border-radius: 2vw;
+    box-shadow: 5px 5px 50px 0px #E6E8EA;
+}
+
+.semicircle2 {
+    position: absolute;
+    width: 18.75vw;
+    height: 11.25vw;
+    border-bottom-left-radius: 50%;
+    border-bottom-right-radius: 50%;
+    border-top-left-radius: 2vw;
+    border-top-right-radius: 2vw;
+    background: #F4F9FF;
+}
+
+.cardNumber2 {
+    position: absolute;
+    font-family: 'Nunito Sans Black', sans-serif;
+    color: #D6E0ED;
+    font-size: 16.5vw;
+    padding-left: 3.85vw;
+}
+
+.cardTitle2 {
+    position: absolute;
+    font-size: 2.25vw;
+    color: black;
+    font-family: 'Nunito Sans ExtraBold', sans-serif;
+    margin-top: 18.75%;
+    margin-bottom: 15%;
+    padding-left: 1.5vw;
+}
+
+.cardContent2 {
+    position: absolute;
+    font-size: 0.975vw;
+    color: #414D5D;
+    font-weight: 500;
+    margin-top: 22.5%;
+    line-height: 135%;
+    margin-bottom: 18.75%;
+    padding-left: 1.5vw;
+}
