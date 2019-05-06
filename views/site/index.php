@@ -7,6 +7,7 @@ use app\assets\SiteAsset;
 
 SiteAsset::register($this);
 $this->title = 'Linky';
+
 ?>
 <div class="site-index">
 
@@ -17,7 +18,7 @@ $this->title = 'Linky';
             <p class="smallText">Linky represents the most useful lists of links made for you,<br />
                 made by you. Come and get what you deserve. <br />
                 Think, make, <span>link.<span></p>
-                <?= Html::a('Link it!',['publications/create'], ['class'=>"bttn", 'style'=>"padding: 0.85% 2.5%; text-decoration: none;"]) ?>
+            <?= Html::a('Link it!',['publications/create'], ['class'=>"bttn", 'style'=>"padding: 0.85% 2.5%; text-decoration: none;"]) ?>
         </div>
     </div>
 
@@ -53,48 +54,27 @@ $this->title = 'Linky';
         </div>
     </div>
 
-    <!--     <div class="jumbotron">
-        <h1>Congratulations!</h1>
+    <div id="principle" style="padding-top: 11%">
+        <h1 class="principleH">What our clients say</h1>
 
-        <p class="lead">You have successfully created your Yii-powered application.</p>
-
-        <p><a class="btn btn-lg btn-success" href="http://www.yiiframework.com">Get started with Yii</a></p>
-    </div>
-
-    <div class="body-content">
-
-        <div class="row">
-            <div class="col-lg-4">
-                <h2>Heading</h2>
-
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
-                    dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
-                    ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
-                    fugiat nulla pariatur.</p>
-
-                <p><a class="btn btn-default" href="http://www.yiiframework.com/doc/">Yii Documentation &raquo;</a></p>
+        <div class="commentCard">
+            <div id='display_comments'>
+                <?= $this->render('comments', ['model' => $model ]) ?>
             </div>
-            <div class="col-lg-4">
-                <h2>Heading</h2>
-
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
-                    dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
-                    ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
-                    fugiat nulla pariatur.</p>
-
-                <p><a class="btn btn-default" href="http://www.yiiframework.com/forum/">Yii Forum &raquo;</a></p>
-            </div>
-            <div class="col-lg-4">
-                <h2>Heading</h2>
-
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
-                    dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
-                    ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
-                    fugiat nulla pariatur.</p>
-
-                <p><a class="btn btn-default" href="http://www.yiiframework.com/extensions/">Yii Extensions &raquo;</a></p>
+            <div id="addCommentContainer" style="margin-top: 2%">
+                <form id="addCommentForm" method="post" action="">
+                    <div>
+                        <label for="comment_content" class="addComment">Leave a comment</label>
+                        <textarea class="addCommentCnt" name="Comments[comment]" id="comment_content" cols="110" rows="5"
+                            placeholder="Enter your comment"></textarea>
+                        <input type="hidden" name="Comments[parent_comment_id]" id="comment_id" value="0" />
+                        <input class="bttn" style="width: 10vw; margin-left: 78%; margin-top: 3%;" type="submit"
+                            name="submitCom" id="submitCom" value="Post" />
+                    </div>
+                </form>
+                <div id="comment_message" style=""></div>
             </div>
         </div>
+    </div>
 
-    </div> -->
 </div>

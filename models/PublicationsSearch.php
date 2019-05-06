@@ -61,7 +61,7 @@ class PublicationsSearch extends Publications
             return $dataProvider;
         }
 
-        // grid filtering conditions
+        // grid filtering conditionsuser
         $query->andFilterWhere([
             'id' => $this->id,
             'category' => $this->category,

@@ -3,16 +3,16 @@
 namespace app\controllers;
 
 use Yii;
-use app\models\Publications;
-use app\models\PublicationsSearch;
+use app\models\Comments;
+use app\models\CommentsSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 
 /**
- * PublicationsController implements the CRUD actions for Publications model.
+ * CommentsController implements the CRUD actions for Comments model.
  */
-class PublicationsController extends Controller
+class CommentsController extends Controller
 {
     /**
      * {@inheritdoc}
@@ -30,12 +30,12 @@ class PublicationsController extends Controller
     }
 
     /**
-     * Lists all Publications models.
+     * Lists all Comments models.
      * @return mixed
      */
     public function actionIndex()
     {
-        $searchModel = new PublicationsSearch();
+        $searchModel = new CommentsSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
         return $this->render('index', [
@@ -45,7 +45,7 @@ class PublicationsController extends Controller
     }
 
     /**
-     * Displays a single Publications model.
+     * Displays a single Comments model.
      * @param integer $id
      * @return mixed
      * @throws NotFoundHttpException if the model cannot be found
@@ -58,19 +58,16 @@ class PublicationsController extends Controller
     }
 
     /**
-     * Creates a new Publications model.
+     * Creates a new Comments model.
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return mixed
      */
     public function actionCreate()
     {
-        $model = new Publications();
-        $model['user'] = Yii::$app->user->id;;
-        $model['post_date'] = date('Y-m-d H:i:s');
+        $model = new Comments();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            //return $this->redirect(['view', 'id' => $model->id]);
-            return $this->redirect(['index']);
+            return $this->redirect(['view', 'id' => $model->comment_id]);
         }
 
         return $this->render('create', [
@@ -79,7 +76,7 @@ class PublicationsController extends Controller
     }
 
     /**
-     * Updates an existing Publications model.
+     * Updates an existing Comments model.
      * If update is successful, the browser will be redirected to the 'view' page.
      * @param integer $id
      * @return mixed
@@ -90,8 +87,7 @@ class PublicationsController extends Controller
         $model = $this->findModel($id);
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            //return $this->redirect(['view', 'id' => $model->id]);
-            return $this->redirect(['index']);
+            return $this->redirect(['view', 'id' => $model->comment_id]);
         }
 
         return $this->render('update', [
@@ -100,7 +96,7 @@ class PublicationsController extends Controller
     }
 
     /**
-     * Deletes an existing Publications model.
+     * Deletes an existing Comments model.
      * If deletion is successful, the browser will be redirected to the 'index' page.
      * @param integer $id
      * @return mixed
@@ -114,15 +110,15 @@ class PublicationsController extends Controller
     }
 
     /**
-     * Finds the Publications model based on its primary key value.
+     * Finds the Comments model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
      * @param integer $id
-     * @return Publications the loaded model
+     * @return Comments the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
     protected function findModel($id)
     {
-        if (($model = Publications::findOne($id)) !== null) {
+        if (($model = Comments::findOne($id)) !== null) {
             return $model;
         }
 

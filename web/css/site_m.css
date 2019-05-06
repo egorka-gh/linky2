@@ -108,3 +108,111 @@
     margin-bottom: 18.75%;
     padding-left: 1.5vw;
 }
+
+
+/*reply*/
+
+.showreply {
+    margin-left: 9%;
+    margin-top: -3.5%;
+    border: none;
+    background-color: transparent;
+    text-decoration: underline;
+    color: #8338EC;
+    font-family: 'Nunito Sans', sans-serif;
+}
+
+.commentBoxCard {
+    background-color: white;
+    margin-top: 35%;
+    margin-left: -51%;
+    width: 37.5%;
+    margin-right: 3.5%;
+    height: auto;
+    margin-bottom: 5%;
+    padding-top: 8.5%;
+    padding-bottom: 2.5%;
+    border-radius: 1.5em;
+    box-shadow: 3px 3px 15px 0px rgba(131, 56, 236, 0.15);
+}
+
+.forComUser {
+    display: inline-block;
+    margin-left: 9.5%
+}
+
+.usernameCom {
+    display: inline-block;
+    vertical-align: middle;
+    font-size: 1.35vw;
+    color: #D4B5FF;
+    font-weight: 400;
+    line-height: 135%;
+}
+
+.commentTxt {
+    margin-left: 9.5%;
+    font-size: 1.2vw;
+    color: #414D5D;
+    font-weight: 500;
+    line-height: 100%;
+    height: auto;
+    width: 80%;
+    word-wrap: break-word;
+    padding-top: 3%
+}
+
+.dateCom {
+    font-size: 1vw;
+    color: #A5B8D1;
+    font-weight: 500;
+    line-height: 135%;
+    margin: 2% 9.5% 5% 9.5%;
+    border-bottom: 0.18em solid #E0EEFF;
+}
+
+.addComment {
+    margin-left: 9.5%;
+    font-size: 1.2vw;
+    color: #414D5D;
+    font-weight: 500;
+    line-height: 100%;
+    height: auto;
+    width: 80%;
+    word-wrap: break-word;
+    padding-top: 3%
+}
+
+.addCommentCnt {
+    margin-left: 9.5%;
+    border: 0.15em solid #E0EEFF;
+    border-radius: 0.5vw;
+    font-family: 'Nunito Sans', sans-serif;
+    font-size: 1vw;
+    margin-top: 1.5%
+}
+
+
+/*comment main page*/
+
+.commentCard {
+    background-color: white;
+    height: auto;
+    margin-bottom: 5%;
+    padding: 7% 0;
+    border-radius: 1.5em;
+    box-shadow: 3px 3px 15px 0px rgba(131, 56, 236, 0.15);
+}
+
+.circle {
+    width: 2.5vw;
+    height: 2.5vw;
+    border-radius: 50%;
+    background: #8338EC;
+    box-shadow: 3px 3px 15px 0px rgba(131, 56, 236, 0.35);
+}
+
+.circle img {
+    max-width: 100%;
+    max-height: 100%;
+}

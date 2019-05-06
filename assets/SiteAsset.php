@@ -23,7 +23,9 @@ class SiteAsset extends AssetBundle
         'css/site_m.css',
     ];
     public $js = [
+        'js/comments.js',
     ];
     public $depends = [
+        'yii\web\YiiAsset',
     ];
 }

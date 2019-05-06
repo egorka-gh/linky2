@@ -2,16 +2,17 @@
 
 namespace app\controllers;
 
-use Yii;
-use yii\filters\AccessControl;
-use yii\web\Controller;
-use yii\web\Response;
-use yii\filters\VerbFilter;
-use app\models\LoginForm;
+use app\components\AccessRule;
+use app\models\Comments;
 use app\models\ContactForm;
 use app\models\EntryForm;
+use app\models\LoginForm;
 use app\models\SignupForm;
-use app\components\AccessRule;
+use Yii;
+use yii\filters\AccessControl;
+use yii\filters\VerbFilter;
+use yii\web\Controller;
+use yii\web\Response;
 
 class SiteController extends Controller
 {
@@ -27,7 +28,7 @@ class SiteController extends Controller
                 'ruleConfig' => [
                     'class' => AccessRule::className(),
                 ],
-                    'only' => ['logout'],
+                'only' => ['logout'],
                 'rules' => [
                     [
                         'actions' => ['logout'],
@@ -68,7 +69,40 @@ class SiteController extends Controller
      */
     public function actionIndex()
     {
-        return $this->render('index');
+        $model = Comments::find()->where('parent_comment_id is null')->all();
+        return $this->render('index', [
+            'model' => $model,
+        ]);
+    }
+
+    public function actionAddComment()
+    {
+        $error = '';
+        $form_model = new Comments();
+        if (!Yii::$app->user->isGuest) {
+            
+                if ($form_model->load(\Yii::$app->request->post())) {
+                    if($form_model['parent_comment_id']==0) $form_model['parent_comment_id']=null;
+                    $form_model['comment_sender_name'] = Yii::$app->user->id;
+                    $form_model['imge'] = Yii::$app->user->identity->avatar;
+                    $form_model['date'] = new \yii\db\Expression('NOW()');
+                    $form_model->save();
+                    $error = '<label class="text-success">Comment added</label>';
+                    var_dump($form_model);
+                }
+            
+        } else {
+            $error == "<p class='text-danger'>Sorry, you you are not logged in</p>";
+        }
+        
+        $model = Comments::find()->where('parent_comment_id is null')->all();
+        ob_start();
+        $this->render('comments', ['model' => $model]);
+        $html = ob_get_clean();
+        $data=array('error' => $error, 'html'=> $html);
+        //echo json_encode($data);
+    
+        return $this->asJson($data);
     }
 
     /**
@@ -96,7 +130,7 @@ class SiteController extends Controller
     public function actionSignup()
     {
         $model = new SignupForm();
- 
+
         if ($model->load(Yii::$app->request->post())) {
             if ($user = $model->signup()) {
                 if (Yii::$app->getUser()->login($user)) {
@@ -104,7 +138,7 @@ class SiteController extends Controller
                 }
             }
         }
- 
+
         return $this->render('signup', [
             'model' => $model,
         ]);
@@ -163,11 +197,11 @@ class SiteController extends Controller
             // данные в $model удачно проверены
 
             // делаем что-то полезное с $model ...
- 
+
             return $this->render('entry-confirm', ['model' => $model]);
         } else {
             // либо страница отображается первый раз, либо есть ошибка в данных
             return $this->render('entry', ['model' => $model]);
         }
-    }    
+    }
 }
