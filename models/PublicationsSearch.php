@@ -1,7 +1,7 @@
 <?php
 
 namespace app\models;
-
+use Yii;
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
 use app\models\Publications;
@@ -86,11 +86,17 @@ class PublicationsSearch extends Publications
             case 2:
                 //$caption="Favorites";
                 //$where =" WHERE EXISTS (SELECT 1 FROM favorites f1 WHERE f1.pub = p.id AND f1.user = '".$user."')";
-                $query->orderby('post_date DESC');
+                $user=Yii::$app->user->id;
+                $subQuery = (new \yii\db\Query)
+                    ->select([new \yii\db\Expression('1')])
+                    ->from('favorites f1')
+                    ->where("f1.pub = publications.id and f1.user = '".$user."'");
+                $query->where(['exists', $subQuery])->orderby('post_date DESC');
                 break;
             case 3:
                 //$caption="My links";
                 //$where =" WHERE p.user ='".$user."'";
+                $query->andWhere("user = '".Yii::$app->user->id."'");
                 $query->orderby('post_date DESC');
                 break;
         }
