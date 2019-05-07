@@ -88,7 +88,7 @@ class SiteController extends Controller
                     $form_model['date'] = new \yii\db\Expression('NOW()');
                     $form_model->save();
                     $error = '<label class="text-success">Comment added</label>';
-                    var_dump($form_model);
+                    //var_dump($form_model);
                 }
             
         } else {
@@ -96,9 +96,7 @@ class SiteController extends Controller
         }
         
         $model = Comments::find()->where('parent_comment_id is null')->all();
-        ob_start();
-        $this->render('comments', ['model' => $model]);
-        $html = ob_get_clean();
+        $html = $this->render('comments', ['model' => $model]);
         $data=array('error' => $error, 'html'=> $html);
         //echo json_encode($data);
     
