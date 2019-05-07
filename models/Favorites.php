@@ -32,7 +32,7 @@ class Favorites extends \yii\db\ActiveRecord
             [['pub'], 'integer'],
             [['user'], 'string', 'max' => 50],
             [['pub'], 'exist', 'skipOnError' => true, 'targetClass' => Publications::className(), 'targetAttribute' => ['pub' => 'id']],
-            [['user'], 'exist', 'skipOnError' => true, 'targetClass' => Users::className(), 'targetAttribute' => ['user' => 'id']],
+            [['user'], 'exist', 'skipOnError' => true, 'targetClass' => User::className(), 'targetAttribute' => ['user' => 'id']],
         ];
     }
 

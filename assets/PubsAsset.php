@@ -23,7 +23,9 @@ class PubsAsset extends AssetBundle
         'css/pubs.css',
     ];
     public $js = [
+        'js/like.js',
     ];
     public $depends = [
+        'yii\web\YiiAsset',
     ];
 }

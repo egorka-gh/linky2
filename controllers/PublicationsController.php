@@ -3,6 +3,7 @@
 namespace app\controllers;
 
 use Yii;
+use app\models\Favorites;
 use app\models\Publications;
 use app\models\PublicationsSearch;
 use yii\web\Controller;
@@ -113,6 +114,37 @@ class PublicationsController extends Controller
         return $this->redirect(['index']);
     }
 
+    public function actionAddLike(){
+        //if (Yii::$app->request->isAjax) {
+        if (!Yii::$app->user->isGuest) {
+            $user = Yii::$app->user->id;
+            $data = Yii::$app->request->post();
+            $pid = $data['postId'];
+            if($pid !== null){
+                $pid=intval($pid);
+            }
+            $action = $data['action'];
+            if($action == -1){
+                //del
+                $model = Favorites::findOne(['pub'=>$pid, 'user'=>$user]);
+                if($model !== null){
+                    $model->delete();   
+                }
+            }else if($action == 1){
+                //add
+                $model = new Favorites();
+                $model['pub'] = $pid;
+                $model['user'] = $user;
+                $model->save();
+            }
+        }
+
+        //recalc likes
+        $count = Favorites::find()->where(['pub'=>$pid])->count();
+        $data=array('likes' => $count, 'pid'=> $pid);
+        return $this->asJson($data);
+    }
+
     /**
      * Finds the Publications model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
@@ -128,4 +160,5 @@ class PublicationsController extends Controller
 
         throw new NotFoundHttpException('The requested page does not exist.');
     }
+
 }
