@@ -361,27 +361,15 @@ span.press {
     margin: 0%;
     display: inline-block;
     position: absolute;
-    opacity: 1;
+    opacity: 0;
     cursor: pointer;
     height: 1.5em;
     width: 2em;
 }
 
-.fb::after {
-    content: "";
-}
-
 .fb:focus,
 .fb:active,
 .fbCurrent {
-    text-align: center;
-    border: 0.15em solid #AF76FF;
-    background-color: #AF76FF;
-    box-shadow: 3px 3px 15px 0px rgba(131, 56, 236, 0.35);
-    color: #fff;
-}
-
-.fb input:checked {
     text-align: center;
     border: 0.15em solid #AF76FF;
     background-color: #AF76FF;

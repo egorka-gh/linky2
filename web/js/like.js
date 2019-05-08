@@ -36,3 +36,15 @@ $(document).on("change", "[id^='toggleLike']", function() {
     })
 
 })
+
+const updateToggles = function() {
+    $(".fb").removeClass("fbCurrent");
+    el = $("input[name='PublicationsSearch[order]']:checked");
+    if (el) {
+        el.parent().addClass("fbCurrent");
+    }
+}
+
+updateToggles();
+
+$("input[name='PublicationsSearch[order]']").change(updateToggles);
